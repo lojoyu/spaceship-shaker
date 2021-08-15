@@ -1,12 +1,10 @@
 import {importAll} from './ussage/ussage';
-import {Conductor} from './mode/conductor2';
 import {ShakerNoRec} from './mode/shakerNoRec';
-import {Shaker} from './mode/shaker';
-import {Balance} from './mode/balance';
-import {Gyro} from './mode/gyro';
 import {onload} from './index';
 
-import water from './sounds/water.m4a';
+import bird from './sounds/bird.wav';
+import car from './sounds/car.wav';
+import leaf from './sounds/leaf.wav';
 
 export const images = importAll(require.context('./img/png', false, /\.(png|jpe?g|svg)$/));
 export const names = ['Shaker', 'Gyro', 'Conductor', 'Balance'];
@@ -17,35 +15,26 @@ let debug = false;
 
 export function initModeList() {
 
-    let shaker = new ShakerNoRec({
+    let shaker_bird = new ShakerNoRec({
         instr: 'SHAKE THE SOUND',
         onload:onload,
-        soundFile: water
+        soundFile: bird,
+        enableMs: 400
     });
-    // let shaker = new Shaker({
-    //     recordTime: 1000,
-    //     recordInstr: 'Create and capture a short sound',
-    //     instr: 'SHAKE THE SOUND',
-    //     debug: debug
-    // });
-    // let gyro = new Gyro({
-    //     recordTime: 10000,
-    //     recordInstr: 'Find and record a continuous sound',
-    //     instr: 'MODULATE THE SOUND WITH MOTIONS',
-    //     debug: debug
-    // });
-    // let bal = new Balance({
-    //     instr: 'KEEP BALANCE',
-    //     onload:onload,
-    //     debug: debug
-    // });
-    // let cond = new Conductor({
-    //     instr: 'WAVE THE DEVICE TO DIRECT THE MUSIC',
-    //     onload:onload,
-    //     debug: debug
-    // });
-    return [shaker, shaker, shaker, shaker];
-    //return [shaker, gyro, cond, bal];
+    let shaker_car = new ShakerNoRec({
+        instr: 'SHAKE THE SOUND',
+        onload:onload,
+        soundFile: car,
+        enableMs: 400
+    });
+    let shaker_leaf = new ShakerNoRec({
+        instr: 'SHAKE THE SOUND',
+        onload:onload,
+        soundFile: leaf,
+        enableMs: 400
+    });
+    
+    return [shaker_bird, shaker_car, shaker_leaf, shaker_bird];
 }
 
 export function createBtn(id, src, txt) {

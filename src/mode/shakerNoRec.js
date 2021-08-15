@@ -15,8 +15,8 @@ export class ShakerNoRec extends Mode {
     constructor(config) {
         super(config);
         this.enablePlay = true;
-        this.avg = new Avg(30);
-        this.enableMs = 2000;
+        this.avg = new Avg(10);
+        this.enableMs = this.config.enableMs || 2000;
     }
     
     inInit() {
