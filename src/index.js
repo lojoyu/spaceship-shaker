@@ -26,7 +26,7 @@ var mode = -1;
 export var nowMode = null;
 export var nowVideo = "";
 var modeList;
-if (checkPC()) {
+if (checkPC() || true) {
     initPage();
 }
 function initPage() {
