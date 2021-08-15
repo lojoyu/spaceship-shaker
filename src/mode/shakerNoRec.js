@@ -2,23 +2,25 @@ import {Mode} from './mode.js';
 import {Avg, json2Str, minmax} from '../ussage/ussage.js';
 import {PingPongDelay} from 'tone';
 import * as Tone from 'tone';
-import water from '../sounds/water.m4a';
-//import water from '../sounds/forest1.mp3';
+
+/*
+ * new ShakerNoRec({
+ *  instr: (string) instruction 
+ *  onload: (function) function after assets loaded
+ *  soundFile: (filepath) shake file
+ * }) 
+ */
 export class ShakerNoRec extends Mode {
     
     constructor(config) {
-        
         super(config);
-        console.log("shaker init", this.config);
-        //if(!this.config.recordTime) this.config.recordTime = 2500;
         this.enablePlay = true;
         this.avg = new Avg(30);
         this.enableMs = 2000;
     }
     
     inInit() {
-        
-        this.sound = new Tone.Player(water, this.onload.bind(this)).toDestination();
+        this.sound = new Tone.Player(this.config.soundFile, this.onload.bind(this)).toDestination();
         console.log(this.sound);
     }
 
@@ -58,14 +60,11 @@ export class ShakerNoRec extends Mode {
 
     playWhenAcc(a, aa) {
         this.logHTML('biginstr', a.toFixed(0) + '<br>' + aa.toFixed(0) + '<br>' + json2Str(this.dm.orientAcc));
-        //if ((a > 0 && aa < 0) || (a < 0 && aa > 0)) return;
-        // if ( Math.abs(a) > Math.abs(aa) * 50 && Math.abs(a) > 3500) {
-        //     //this.playImmediately();
-        // } else 
-        if (a > 6000 && aa < 0 || a < -10000 && aa > 0 || Math.abs(a) > Math.abs(aa) * 1000) {
-            console.log(a, aa, 'play!');
+        
+        if (Math.abs(a) < 2000) return;
+        if ( Math.abs(a) > Math.abs(aa) * 25) {
             this.playImmediately();
-        }
+        } 
     }
      
     playImmediately() {
