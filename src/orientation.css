@@ -1,0 +1,17 @@
+@media only screen and (orientation:landscape) and (max-device-width: 768px) {
+    .container {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        height: calc(100vw - 15px);
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding-top: 15px;
+    }
+
+    /* #title {
+        padding-top: 15px;
+    } */
+}
