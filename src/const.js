@@ -20,19 +20,19 @@ export function initModeList() {
         instr: '用力搖搖手機<br>加入演出',
         onload:onload,
         soundFile: bird,
-        enableMs: 400
+        enableMs: 300
     });
     let shaker_car = new ShakerNoRec({
         instr: '用力搖搖手機<br>加入演出',
         onload:onload,
         soundFile: car,
-        enableMs: 400
+        enableMs: 300
     });
     let shaker_leaf = new ShakerNoRec({
         instr: '用力搖搖手機<br>加入演出',
         onload:onload,
         soundFile: leaf,
-        enableMs: 400
+        enableMs: 300
     });
     
     return [shaker_bird, shaker_car, shaker_leaf, shaker_bird];
