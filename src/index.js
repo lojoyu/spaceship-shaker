@@ -26,13 +26,15 @@ var mode = -1;
 export var nowMode = null;
 export var nowVideo = "";
 var modeList;
-if (checkPC()) {
-    initPage();
-}
+//if (checkPC()||true) {
+console.log('initpage??!');
+initPage();
+//}
 function initPage() {
-    
+    console.log(images);
     $('#previmg').attr("src", arrow);
     for (let i in images) {
+        console.log(images[i].default);
         //images[i].default is file path
         $('#selector').append(createBtn(`mode-${i}`, images[i].default, names[i]));
         // button onclick
@@ -97,7 +99,9 @@ $("#previmg").on('click', function() {
 
 function selectMode () {
     //console.log('select mode:', mode);
-    $("#biginstr").text(nowMode.getInstr());
+    $("#biginstr").css('background-image', `url(${images[mode].default})`);
+    console.log(images[mode].default);
+    $("#biginstr").html(nowMode.getInstr());
     $("#recinstr").text(nowMode.getRecordInstr());
     nowMode.setDM(dm); //only one time?
     nowMode.setEnable(true);

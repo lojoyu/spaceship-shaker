@@ -1,8 +1,13 @@
+:root {
+    --background: #f3f5f5;
+    --font: black;
+  }
+
 html, body {
     width: 100%;
     text-align: center;
-    color: white;
-    background-color: black;
+    color: var(--font);
+    background-color: var(--background);
     height: 100%;
     line-height: 1.5;
     font-family: 'Nunito Sans', 'Noto Sans TC', sans-serif;
@@ -70,15 +75,17 @@ h4 {
 }
 
 #title {
+    padding-top: 7%;
     text-align: center;
     /* font-style: italic; */
     font-weight: 600;
+    font-size: 2em;
 }
 
 #subtitle {
     /* color: grey; */
     text-align: center;
-    padding-top: 10px;
+    padding-top: 15px;
 
     animation: changeColor 2s;
     -moz-animation: changeColor 2s;
@@ -92,7 +99,7 @@ h4 {
     float:left;
     position: relative;
     overflow:hidden;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     border-radius: 10px;
     position: relative;
     width: 45%;
@@ -106,6 +113,9 @@ h4 {
     animation: fadeIn 0.8s;
 }
 
+.squaresingle {
+    margin-left: 27.5%;
+}
 
 
 .squarecontent {
@@ -115,9 +125,9 @@ h4 {
     width: 100%;
     margin: 0;
     position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    /* top: 50%; */
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 .squarecontent img{
@@ -152,6 +162,7 @@ h4 {
 
 #prev {
     text-align: left;
+    padding-top: 10%;
     padding-left: 10px;
     font-size: 2em;
     stroke: 2px;
@@ -217,9 +228,18 @@ h4 {
 
 #biginstr {
     padding: 20px;
-    font-size: 2em;
-    line-height: 3rem;
-    font-style:italic
+    font-size: 2.5em;
+    line-height: 3.5rem;
+    font-style:italic;
+    font-weight: 600;
+
+    /*below: fill background text*/
+    animation: fadeIn 1s;
+    animation-fill-mode: forwards;
+    /* background: var(--font); */
+    /* background-image: url(bird.png); */
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 .center {
@@ -295,7 +315,7 @@ h4 {
 
 @keyframes changeColor {
     from {
-      color: #333333;
+      color: #484848;
     }
     to {
         color:#cccccc;
@@ -358,7 +378,7 @@ h4 {
 
 @-moz-keyframes changeColor {
     from {
-      color: #333333;
+      color: #484848;
     }
     to {
         color:#cccccc;
